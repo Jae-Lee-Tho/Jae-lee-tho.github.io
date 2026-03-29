@@ -6,35 +6,53 @@ import { projects } from '../data/projects'
 
 const INITIAL_SHOW = 3
 
-function ProjectCard({ project, index }) {
-  const navigate = useNavigate()
+    function ProjectCard({ project, index }) {
+      const navigate = useNavigate()
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -4, boxShadow: '0 12px 40px -8px rgba(37,99,235,0.15)' }}
-      onClick={() => navigate(`/projects/${project.slug}`)}
-      className="bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-pointer transition-shadow duration-300 flex flex-col"
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.08 }}
+          whileHover={{ y: -4, boxShadow: '0 12px 40px -8px rgba(37,99,235,0.15)' }}
+          onClick={() => navigate(`/projects/${project.slug}`)}
+          className="bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-pointer transition-shadow duration-300 flex flex-col"
+        >
+          {/* Image / Colour banner */}
+    <div
+      className="h-44 flex items-center justify-center relative overflow-hidden"
+      style={{ background: project.bgColor || '#2563eb' }}
     >
-      {/* Image / Colour banner */}
       <div
-        className="h-44 flex items-center justify-center relative overflow-hidden"
-        style={{ background: project.bgColor || '#2563eb' }}
-      >
-        <div className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4) 0%, transparent 60%)',
-          }}
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4) 0%, transparent 60%)',
+        }}
+      />
+
+      {project.image ? (
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
         />
-        {/* Stack icon placeholder */}
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2">
-          <rect x="2" y="3" width="20" height="14" rx="2"/>
-          <path d="M8 21h8M12 17v4"/>
+      ) : (
+        <svg
+          width="64"
+          height="64"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="rgba(255,255,255,0.7)"
+          strokeWidth="1.2"
+          className="relative z-10"
+        >
+          <rect x="2" y="3" width="20" height="14" rx="2" />
+          <path d="M8 21h8M12 17v4" />
         </svg>
-      </div>
+      )}
+    </div>
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">

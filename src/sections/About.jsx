@@ -3,13 +3,13 @@ import SectionTitle from '../components/SectionTitle'
 
 const education = [
   {
-    degree: 'BSc in Electrical & Computer Engineering',
+    degree: 'BS in Electrical & Computer Engineering',
     school: 'University of Washington, Seattle',
     period: '2025 – Expected Jun 2027',
-    note: "Dean's List (Dec 2025)",
+    note: "Dean's List (Dec 2025, Mar 2026)",
   },
   {
-    degree: 'BSc in Computer Engineering',
+    degree: 'BS in Computer Engineering',
     school: 'University of Maryland, College Park',
     period: 'Sep 2023 – May 2025',
     note: "Dean's List (Dec 2023, May 2024)",
@@ -19,8 +19,14 @@ const education = [
 const experience = [
   {
     role: 'Undergraduate Researcher',
-    org: 'Autonomous Robot Intelligence Lab, SNU',
+    org: 'Autonomy, Robotics & Connectivity Lab, UW',
     period: 'Mar 2026 – Present',
+    location: 'Seattle, WA',
+  },
+  {
+    role: 'K-Capstone Industry Collaboration',
+    org: 'Security Robotics / U.S. Expansion Project',
+    period: 'Nov 2025 – Mar 2026',
     location: 'Seattle, WA',
   },
   {
@@ -29,12 +35,7 @@ const experience = [
     period: 'May 2025 – Sep 2025',
     location: 'Seoul, South Korea',
   },
-  {
-    role: 'K-Capstone Industry Collaboration',
-    org: 'Security Robotics / U.S. Expansion Project',
-    period: 'Nov 2025 – Mar 2026',
-    location: 'Seattle, WA',
-  },
+  
 ]
 
 const areas = ['Robotics', 'Embedded', 'Full-Stack', 'AI/ML', 'FPGA']
@@ -67,7 +68,7 @@ export default function About() {
                 <h3 className="font-bold text-slate-700 text-lg">Bio</h3>
               </div>
               <p className="text-slate-500 leading-relaxed">
-                ECE student at the University of Washington with a passion for building intelligent autonomous
+                Electrical and Computer Engineering student at the University of Washington with a passion for building intelligent autonomous
                 systems. My research spans vision-based drone navigation and humanoid robotics, while my
                 project work spans full-stack AI apps, FPGA design, and embedded systems. I thrive at
                 the intersection of hardware and software.
@@ -117,9 +118,10 @@ export default function About() {
               <div className="w-44 h-44 rounded-full border-4 border-blue-100 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center overflow-hidden shadow-lg">
                 {/* REPLACE src with your actual photo */}
                 <img
-                  src="https://ui-avatars.com/api/?name=JL&background=2563eb&color=fff&size=176&bold=true&font-size=0.4"
+                  src="/jae-photo.jpeg"
                   alt="Jaegyoon Lee"
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 20%" }}
                 />
               </div>
               <span className="absolute bottom-2 right-0 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">

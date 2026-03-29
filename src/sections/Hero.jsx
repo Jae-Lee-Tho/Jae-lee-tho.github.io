@@ -3,10 +3,9 @@ import { contactInfo } from '../data/contact'
 
 const codeLines = [
   { type: 'comment', text: '// Researcher & Engineer' },
-  { type: 'text',    text: '' },
   { parts: [
     { cls: 'code-keyword', t: 'const' },
-    { cls: '',             t: ' developer = {' },
+    { cls: '',             t: ' engineer = {' },
   ]},
   { parts: [
     { cls: '',           t: '  ' },
@@ -19,15 +18,12 @@ const codeLines = [
     { cls: '',           t: '  ' },
     { cls: 'code-var',   t: 'skills' },
     { cls: '',           t: ': [' },
-    { cls: 'code-string',t: "'Python'" },
+    { cls: 'code-string',t: "'Software'" },
     { cls: '',           t: ', ' },
     { cls: 'code-string',t: "'ROS2'" },
+    { cls: '',           t: ', ' },
+    { cls: 'code-string',t: "'Controls'" },
     { cls: '',           t: ',' },
-  ]},
-  { parts: [
-    { cls: '',           t: '    ' },
-    { cls: 'code-string',t: "'Flutter'" },
-    { cls: '',           t: '],' },
   ]},
   { parts: [
     { cls: '',           t: '  ' },
@@ -35,7 +31,7 @@ const codeLines = [
     { cls: '',           t: ': [' },
     { cls: 'code-string',t: "'Robotics'" },
     { cls: '',           t: ', ' },
-    { cls: 'code-string',t: "'Full-Stack'" },
+    { cls: 'code-string',t: "'Embedded Systems'" },
     { cls: '',           t: '],' },
   ]},
   { parts: [
@@ -62,7 +58,7 @@ function CodeCard() {
           <span className="w-3 h-3 rounded-full bg-yellow-400" />
           <span className="w-3 h-3 rounded-full bg-green-400" />
         </div>
-        <span className="text-xs text-slate-400 font-mono">developer.js</span>
+        <span className="text-xs text-slate-400 font-mono">engineer.js</span>
       </div>
       {/* Code */}
       <div className="p-5 font-mono text-sm leading-7 text-slate-700">
@@ -124,7 +120,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-2xl font-medium text-slate-500 mb-5"
           >
-            ECE Student &amp; Researcher
+            Engineer &amp; Researcher
           </motion.p>
 
           <motion.p

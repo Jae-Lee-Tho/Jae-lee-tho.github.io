@@ -49,7 +49,7 @@ export const projects = [
       'Designed and developed a cross-platform mental wellness app featuring AI-powered virtual pets that respond to user emotions and evolve through consistent interaction. Built a FastAPI backend with Supabase integration and connected OpenAI APIs for emotional context processing, enabling dynamic diary generation and mood tracking. Engineered therapeutic prompt design and conversation logic to deliver emotionally coherent, engaging support.',
     tags: ['Flutter', 'FastAPI', 'Supabase', 'OpenAI', 'AI'],
     tech: ['Flutter', 'FastAPI', 'Supabase', 'OpenAI API', 'Dart'],
-    github: 'https://github.com/jlee1296',
+    github: 'https://github.com/orgs/DrTheragotchi/repositories',
     live: null,
     period: 'Apr 2025',
     highlights: [
@@ -69,7 +69,7 @@ export const projects = [
       'Developed a TensorFlow AI model for couple compatibility scoring, trained on 50,000+ labeled images with 95% accuracy. Created real-time scoring APIs using Django and AWS, employing embedding-based similarity techniques. Delivered responsive AI-powered user experiences across both web (React) and mobile (Flutter) platforms.',
     tags: ['Flutter', 'React', 'TensorFlow', 'Django', 'AWS'],
     tech: ['TensorFlow', 'Flutter', 'React', 'Django', 'AWS', 'TailwindCSS'],
-    github: 'https://github.com/jlee1296',
+    github: 'https://github.com/KissingBooth-App-Team',
     live: null,
     period: 'Dec 2024 – Feb 2025',
     highlights: [
@@ -89,7 +89,7 @@ export const projects = [
       'Built a chatbot system for handling food delivery orders and customer interactions using DialogFlow for natural language understanding. Implemented backend logic using FastAPI and integrated MySQL database functionalities for order tracking. Enhanced real-time capabilities through API and webhook integrations.',
     tags: ['DialogFlow', 'Python', 'FastAPI', 'MySQL'],
     tech: ['DialogFlow', 'Python', 'FastAPI', 'MySQL', 'Webhooks'],
-    github: 'https://github.com/jlee1296',
+    github: 'https://github.com/Jae-Lee-Tho/Dialogflow_Chatbot',
     live: null,
     period: 'Dec 2024 – Jan 2025',
     highlights: [
@@ -103,13 +103,14 @@ export const projects = [
   {
     slug: 'otv',
     title: 'Over Terrain Vehicle (OTV)',
+    image: '/projects/otv.jpg',
     shortDesc:
       'An autonomous vehicle prototype that identifies plantable substrates and navigates through obstacles using Jetson ML and Arduino.',
     description:
       'Partnered with a multidisciplinary team to prototype an autonomous vehicle that identifies plantable substrates and navigates through obstacles. Enhanced vision systems using Jetson-based machine learning for accurate substrate classification. Programmed Arduino-integrated navigation algorithms enabling efficient obstacle avoidance and destination navigation.',
     tags: ['Arduino', 'Jetson', 'C++', 'Robotics', 'ML'],
     tech: ['Arduino', 'NVIDIA Jetson', 'C++', 'Computer Vision', 'Autonomous Navigation'],
-    github: 'https://github.com/jlee1296',
+    github: 'https://sites.google.com/terpmail.umd.edu/the-seeders/electronics-and-key-components?authuser=0',
     live: null,
     period: 'Aug 2023 – Dec 2023',
     highlights: [
