@@ -1,95 +1,93 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import SectionTitle from '../components/SectionTitle'
+import { motion } from 'framer-motion'
 import { projects } from '../data/projects'
 
-const INITIAL_SHOW = 3
+const categoryLabel = {
+  'drone-control': 'EMBEDDED SYSTEMS',
+  'fpga-slot-machine': 'DIGITAL HARDWARE',
+  'teragotchi': 'AI / MOBILE',
+  'ai-compatibility': 'MACHINE LEARNING',
+  'food-chatbot': 'BACKEND / NLP',
+  'otv': 'ROBOTICS',
+}
 
-    function ProjectCard({ project, index }) {
-      const navigate = useNavigate()
+const techLabel = {
+  'drone-control': 'Python · Arduino · EMG',
+  'fpga-slot-machine': 'SystemVerilog · FPGA',
+  'teragotchi': 'Flutter · FastAPI · OpenAI',
+  'ai-compatibility': 'TensorFlow · Django · AWS',
+  'food-chatbot': 'DialogFlow · FastAPI',
+  'otv': 'Jetson · Arduino · C++',
+}
 
-      return (
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.08 }}
-          whileHover={{ y: -4, boxShadow: '0 12px 40px -8px rgba(37,99,235,0.15)' }}
-          onClick={() => navigate(`/projects/${project.slug}`)}
-          className="bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-pointer transition-shadow duration-300 flex flex-col"
-        >
-          {/* Image / Colour banner */}
-    <div
-      className="h-44 flex items-center justify-center relative overflow-hidden"
-      style={{ background: project.bgColor || '#2563eb' }}
+function ProjectRow({ project, index, onClick }) {
+  const num = String(index + 1).padStart(2, '0')
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
+      onClick={onClick}
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '2fr 3fr',
+        borderBottom: '1px solid rgba(255,255,255,0.07)',
+        cursor: 'pointer',
+      }}
+      whileHover={{ backgroundColor: 'rgba(255,255,255,0.02)' }}
     >
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4) 0%, transparent 60%)',
-        }}
-      />
-
-      {project.image ? (
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover"
-        />
-      ) : (
-        <svg
-          width="64"
-          height="64"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="rgba(255,255,255,0.7)"
-          strokeWidth="1.2"
-          className="relative z-10"
-        >
-          <rect x="2" y="3" width="20" height="14" rx="2" />
-          <path d="M8 21h8M12 17v4" />
-        </svg>
-      )}
-    </div>
+      {/* Thumbnail */}
+      <div style={{
+        aspectRatio: '4/3',
+        background: 'rgba(255,255,255,0.03)',
+        borderRight: '1px solid rgba(255,255,255,0.07)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {project.image ? (
+          <img src={project.image} alt={project.title}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+        ) : (
+          <svg viewBox="0 0 200 150" width="100%" height="100%" style={{ opacity: 0.08 }}>
+            <rect x="20" y="20" width="160" height="110" rx="2" stroke="white" strokeWidth="0.8" fill="none" />
+            <line x1="20" y1="50" x2="180" y2="50" stroke="white" strokeWidth="0.4" />
+            <line x1="70" y1="20" x2="70" y2="130" stroke="white" strokeWidth="0.4" />
+            <circle cx="100" cy="90" r="22" stroke="white" strokeWidth="0.8" fill="none" />
+          </svg>
+        )}
+        <div style={{ position: 'absolute', top: 12, left: 14, fontSize: 9, letterSpacing: '0.1em', fontFamily: 'JetBrains Mono, monospace', color: 'rgba(255,255,255,0.35)' }}>
+          {num}
+        </div>
+      </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="font-bold text-lg text-slate-800 mb-2 leading-snug">{project.title}</h3>
-        <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-1">{project.shortDesc}</p>
-
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {project.tags.map((tag) => (
-            <span key={tag} className="tag text-xs">{tag}</span>
-          ))}
+      <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 14, minHeight: 140 }}>
+        <div>
+          <p style={{ fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', fontFamily: 'JetBrains Mono, monospace', marginBottom: 10 }}>
+            {categoryLabel[project.slug] || 'PROJECT'}
+          </p>
+          <h3 style={{ fontSize: 'clamp(15px, 1.8vw, 20px)', fontWeight: 600, letterSpacing: '-0.4px', lineHeight: 1.2, color: '#ffffff', marginBottom: 10 }}>
+            {project.title}
+          </h3>
+          <p style={{ fontSize: 12, lineHeight: 1.7, color: 'rgba(255,255,255,0.5)', maxWidth: 380 }}>
+            {project.shortDesc}
+          </p>
         </div>
 
-        <div className="flex gap-3 mt-auto">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="btn-outline text-xs py-2 px-4 gap-1.5"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="btn-outline text-xs py-2 px-4 gap-1.5"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live Demo
-            </a>
-          )}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: 10, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.28)', fontFamily: 'JetBrains Mono, monospace' }}>
+            {techLabel[project.slug]}
+          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'rgba(255,255,255,0.45)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            <span>View</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            </svg>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -97,45 +95,64 @@ const INITIAL_SHOW = 3
 }
 
 export default function Projects() {
-  const [showAll, setShowAll] = useState(false)
-  const visible = showAll ? projects : projects.slice(0, INITIAL_SHOW)
+  const navigate = useNavigate()
 
   return (
-    <section id="projects" className="bg-surface">
-      <div className="section-container">
-        <SectionTitle
-          title="Projects"
-          subtitle="Here are some of the projects I've worked on, showcasing my skills in robotics, embedded systems, and full-stack development."
-        />
+    <section id="projects" style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <div className="max-w-6xl mx-auto px-8 md:px-14" style={{ paddingTop: 96, paddingBottom: 96 }}>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence>
-            {visible.map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} />
-            ))}
-          </AnimatePresence>
-        </div>
+        {/* Sticky + cards layout */}
+        <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 64, alignItems: 'start' }}>
 
-        {projects.length > INITIAL_SHOW && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="btn-outline gap-2"
-            >
-              {showAll ? 'Show Less' : `Show All (${projects.length})`}
-              <svg
-                width="16" height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}
-              >
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
-            </button>
+          {/* LEFT: sticky heading */}
+          <div style={{ position: 'sticky', top: 72 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 32 }}>
+              <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: 'JetBrains Mono, monospace' }}>03</span>
+              <div style={{ height: 1, width: 28, background: 'rgba(255,255,255,0.2)' }} />
+              <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: 'JetBrains Mono, monospace' }}>Projects</span>
+            </div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              style={{ fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 700, letterSpacing: '-1.2px', lineHeight: 1.05, color: '#ffffff', marginBottom: 20 }}>
+              Selected<br />Work
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75 }}>
+              Hardware, AI, and software systems built at the intersection of research and engineering.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              transition={{ delay: 0.35 }}
+              style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'JetBrains Mono, monospace', color: 'rgba(255,255,255,0.28)', marginBottom: 6 }}>
+                TOTAL PROJECTS
+              </p>
+              <p style={{ fontSize: 28, fontWeight: 700, color: 'rgba(255,255,255,0.85)', letterSpacing: '-1px' }}>
+                {String(projects.length).padStart(2, '0')}
+              </p>
+            </motion.div>
           </div>
-        )}
+
+          {/* RIGHT: project rows */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+            {projects.map((project, i) => (
+              <ProjectRow
+                key={project.slug}
+                project={project}
+                index={i}
+                onClick={() => navigate(`/projects/${project.slug}`)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

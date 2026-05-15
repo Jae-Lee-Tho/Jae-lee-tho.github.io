@@ -3,65 +3,96 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
+  html { scroll-behavior: smooth; }
   body {
-    @apply bg-surface text-slate-800 font-sans antialiased;
+    background: #0d0d0d;
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 }
 
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-6 md:px-12 py-24;
+    @apply max-w-6xl mx-auto px-8 md:px-14;
+    padding-top: 96px;
+    padding-bottom: 96px;
   }
 
-  .btn-primary {
-    @apply inline-flex items-center gap-2 bg-accent text-white font-semibold px-6 py-3 rounded-xl
-           hover:bg-accent-dark transition-all duration-200 shadow-sm hover:shadow-md
-           active:scale-95;
+  /* Ghost / outline button */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #ffffff;
+    background: transparent;
+    padding: 10px 22px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.04);
   }
 
-  .btn-outline {
-    @apply inline-flex items-center gap-2 border border-slate-200 bg-white text-slate-700
-           font-semibold px-5 py-2.5 rounded-xl hover:border-accent hover:text-accent
-           transition-all duration-200 shadow-sm hover:shadow-md active:scale-95;
+  /* Technical text input */
+  .input-technical {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-size: 13px;
+    padding: 10px 0;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  .input-technical::placeholder { color: rgba(255,255,255,0.2); }
+  .input-technical:focus { border-color: rgba(255,255,255,0.6); }
+
+  /* Section rule */
+  .rule {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 0;
   }
 
+  /* Spec label */
+  .spec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* Technical tag */
   .tag {
-    @apply inline-block bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full
-           border border-blue-100;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
   }
-
-  .card {
-    @apply bg-white rounded-2xl shadow-sm border border-slate-100 p-6
-           hover:shadow-md transition-all duration-300;
-  }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f0f5ff;
-}
-::-webkit-scrollbar-thumb {
-  background: #bfdbfe;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #93c5fd;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
 
-/* Code block syntax colours */
-.code-keyword { color: #f97316; }
-.code-var     { color: #6366f1; }
-.code-string  { color: #22c55e; }
-.code-comment { color: #94a3b8; }
-.code-punct   { color: #64748b; }
+/* Code syntax (for code card) */
+.code-keyword { color: rgba(255,255,255,0.9); }
+.code-var     { color: rgba(255,255,255,0.5); }
+.code-string  { color: rgba(255,255,255,0.7); }
+.code-comment { color: rgba(255,255,255,0.25); }

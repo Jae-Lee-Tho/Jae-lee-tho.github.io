@@ -1,153 +1,131 @@
 import { motion } from 'framer-motion'
-import SectionTitle from '../components/SectionTitle'
 
-const education = [
-  {
-    degree: 'BS in Electrical & Computer Engineering',
-    school: 'University of Washington, Seattle',
-    period: '2025 – Expected Jun 2027',
-    note: "Dean's List (Dec 2025, Mar 2026)",
-  },
-  {
-    degree: 'BS in Computer Engineering',
-    school: 'University of Maryland, College Park',
-    period: 'Sep 2023 – May 2025',
-    note: "Dean's List (Dec 2023, May 2024)",
-  },
+const bio = `ECE student and researcher at the University of Washington, focused on the intersection of robotics, embedded systems, and AI. I build things that move, think, and communicate — from assistive drone control systems to AI-powered wellness apps. Currently seeking internship opportunities in hardware, robotics, and intelligent systems.`
+
+const roles = ['Researcher', 'Engineer', 'Builder']
+
+const timeline = [
+  { year: '2024–', label: 'University of Washington', sub: 'B.S. Electrical & Computer Engineering' },
+  { year: '2023', label: 'University of Maryland', sub: 'Transfer — Engineering' },
+  { year: '2023', label: 'OTV Robotics Team', sub: 'Autonomous Vehicle Prototype' },
 ]
-
-const experience = [
-  {
-    role: 'Undergraduate Researcher',
-    org: 'Autonomy, Robotics & Connectivity Lab, UW',
-    period: 'Mar 2026 – Present',
-    location: 'Seattle, WA',
-  },
-  {
-    role: 'K-Capstone Industry Collaboration',
-    org: 'Security Robotics / U.S. Expansion Project',
-    period: 'Nov 2025 – Mar 2026',
-    location: 'Seattle, WA',
-  },
-  {
-    role: 'Undergraduate Researcher',
-    org: 'Autonomous Robot Intelligence Lab, SNU',
-    period: 'May 2025 – Sep 2025',
-    location: 'Seoul, South Korea',
-  },
-  
-]
-
-const areas = ['Robotics', 'Embedded', 'Full-Stack', 'AI/ML', 'FPGA']
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, delay },
-})
 
 export default function About() {
   return (
-    <section id="about" className="bg-white">
+    <section id="about" style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="section-container">
-        <SectionTitle
-          title="About Me"
-          subtitle=""
-        />
 
-        <div className="grid md:grid-cols-3 gap-10 items-start">
-          {/* Left: bio + cards */}
-          <div className="md:col-span-2 space-y-8">
-            {/* Bio */}
-            <motion.div {...fadeUp(0)}>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-accent">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                </span>
-                <h3 className="font-bold text-slate-700 text-lg">Bio</h3>
-              </div>
-              <p className="text-slate-500 leading-relaxed">
-                Electrical and Computer Engineering student at the University of Washington with a passion for building intelligent autonomous
-                systems. My research spans vision-based drone navigation and humanoid robotics, while my
-                project work spans full-stack AI apps, FPGA design, and embedded systems. I thrive at
-                the intersection of hardware and software.
-              </p>
-            </motion.div>
+        {/* Section label — matches all other sections */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 56 }}>
+          <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: 'JetBrains Mono, monospace' }}>02</span>
+          <div style={{ height: 1, width: 28, background: 'rgba(255,255,255,0.2)' }} />
+          <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: 'JetBrains Mono, monospace' }}>About</span>
+        </div>
 
-            {/* Education + Experience cards */}
-            <div className="grid sm:grid-cols-2 gap-5">
-              <motion.div {...fadeUp(0.1)} className="card space-y-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-accent">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                  </span>
-                  <h3 className="font-bold text-slate-700">Education</h3>
-                </div>
-                {education.map((e, i) => (
-                  <div key={i}>
-                    <p className="font-semibold text-slate-800 text-sm leading-snug">{e.degree}</p>
-                    <p className="text-accent text-xs mt-0.5">{e.school}</p>
-                    <p className="text-slate-400 text-xs">{e.period}</p>
-                    {e.note && <p className="text-slate-400 text-xs italic">{e.note}</p>}
-                  </div>
-                ))}
-              </motion.div>
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-1.5px', lineHeight: 1.0, color: '#ffffff', marginBottom: 56 }}>
+          About Me
+        </motion.h2>
 
-              <motion.div {...fadeUp(0.15)} className="card space-y-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-accent">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                  </span>
-                  <h3 className="font-bold text-slate-700">Experience</h3>
-                </div>
-                {experience.map((e, i) => (
-                  <div key={i}>
-                    <p className="font-semibold text-slate-800 text-sm leading-snug">{e.role}</p>
-                    <p className="text-accent text-xs mt-0.5">{e.org}</p>
-                    <p className="text-slate-400 text-xs">{e.period} · {e.location}</p>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
+        {/* Two-col layout */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
 
-          {/* Right: profile card */}
-          <motion.div {...fadeUp(0.2)} className="flex flex-col items-center gap-5">
-            <div className="relative">
-              <div className="w-44 h-44 rounded-full border-4 border-blue-100 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center overflow-hidden shadow-lg">
-                {/* REPLACE src with your actual photo */}
+          {/* Left: photo + timeline */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+
+            {/* Photo + identity */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 24 }}>
+              <div style={{
+                width: 120, height: 120, borderRadius: '50%', overflow: 'hidden', flexShrink: 0,
+                border: '1px solid rgba(255,255,255,0.18)',
+                background: 'rgba(255,255,255,0.04)',
+              }}>
                 <img
                   src="/jae-photo.jpeg"
                   alt="Jaegyoon Lee"
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: "center 20%" }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onError={e => { e.currentTarget.style.display = 'none' }}
                 />
               </div>
-              <span className="absolute bottom-2 right-0 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
-                UW ECE
-              </span>
-            </div>
-            <div className="text-center">
-              <p className="font-bold text-xl text-slate-800">Jaegyoon Lee</p>
-              <p className="text-slate-500 text-sm">ECE Student &amp; Researcher</p>
+              <div style={{ paddingTop: 10 }}>
+                <p style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 4, letterSpacing: '-0.3px' }}>Jaegyoon Lee</p>
+                <p style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', fontFamily: 'JetBrains Mono, monospace', marginBottom: 14 }}>ECE · UW Seattle</p>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  {roles.map(r => (
+                    <span key={r} className="tag">{r}</span>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Area tags */}
-            <div className="flex flex-wrap gap-2 justify-center">
-              {areas.map((a) => (
-                <span key={a} className="tag">{a}</span>
+            {/* Timeline */}
+            <div>
+              <p className="spec-label" style={{ marginBottom: 18 }}>Timeline</p>
+              {timeline.map(({ year, label, sub }, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  style={{
+                    display: 'flex', gap: 20,
+                    paddingBottom: 18,
+                    borderBottom: i < timeline.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                    marginBottom: i < timeline.length - 1 ? 18 : 0,
+                  }}>
+                  <span style={{ fontSize: 10, fontFamily: 'JetBrains Mono, monospace', color: 'rgba(255,255,255,0.35)', width: 44, flexShrink: 0, paddingTop: 2 }}>{year}</span>
+                  <div>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: 500, marginBottom: 2 }}>{label}</p>
+                    <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{sub}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right: bio + spec table */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+
+            <p style={{ fontSize: 15, lineHeight: 1.78, color: 'rgba(255,255,255,0.7)', fontWeight: 400 }}>
+              {bio}
+            </p>
+
+            {/* Spec table */}
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 28 }}>
+              {[
+                ['Degree', 'B.S. Electrical & Computer Engineering'],
+                ['University', 'University of Washington'],
+                ['Focus', 'Robotics, AI, Embedded Systems'],
+                ['Languages', 'Python, C/C++, JavaScript, SystemVerilog'],
+                ['Interests', 'Autonomous Systems, Signal Processing, MLOps'],
+              ].map(([k, v]) => (
+                <div key={k} style={{ display: 'flex', borderBottom: '1px solid rgba(255,255,255,0.07)', padding: '11px 0' }}>
+                  <span style={{ width: 100, flexShrink: 0, fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)', fontFamily: 'JetBrains Mono, monospace' }}>{k}</span>
+                  <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>{v}</span>
+                </div>
               ))}
             </div>
 
-            {/* Resume download */}
-            <a
-              href="#"
-              className="btn-primary w-full justify-center text-sm mt-2"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download Resume
-            </a>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <a href="https://github.com/Jae-Lee-Tho" target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: 10 }}>GitHub</a>
+              <a href="https://linkedin.com/in/jaegyoon-lee" target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: 10 }}>LinkedIn</a>
+            </div>
           </motion.div>
         </div>
       </div>

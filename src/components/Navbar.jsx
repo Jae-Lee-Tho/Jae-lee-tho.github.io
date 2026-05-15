@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { contactInfo } from '../data/contact'
 
 const NAV_LINKS = [
-  { label: 'Home',         id: 'home' },
   { label: 'About',        id: 'about' },
   { label: 'Projects',     id: 'projects' },
   { label: 'Skills',       id: 'skills' },
@@ -13,113 +12,112 @@ const NAV_LINKS = [
   { label: 'Contact',      id: 'contact' },
 ]
 
+function LiveTime() {
+  const [time, setTime] = useState('')
+  useEffect(() => {
+    const fmt = () => {
+      const now = new Date()
+      return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
+    }
+    setTime(fmt())
+    const id = setInterval(() => setTime(fmt()), 1000)
+    return () => clearInterval(id)
+  }, [])
+  return <span>{time}</span>
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
   const isHome = location.pathname === '/'
-  const active = useActiveSection(NAV_LINKS.map((l) => l.id))
+  const active = useActiveSection(['home', ...NAV_LINKS.map(l => l.id)])
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const fn = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', fn, { passive: true })
+    return () => window.removeEventListener('scroll', fn)
   }, [])
 
   function scrollTo(id) {
     setMenuOpen(false)
-    if (!isHome) {
-      navigate('/')
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    }
+    if (!isHome) { navigate('/'); setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100) }
+    else document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100' : 'bg-transparent'
-      }`}
+      className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? 'rgba(13,13,13,0.95)' : 'transparent',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
+        backdropFilter: scrolled ? 'blur(10px)' : 'none',
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-8 md:px-14 flex items-center justify-between" style={{ height: 52 }}>
         {/* Logo */}
-        <button onClick={() => scrollTo('home')} className="text-accent font-bold text-2xl tracking-tight">
+        <button onClick={() => scrollTo('home')} className="text-white font-bold text-base tracking-tight">
           JL.
         </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Center: live time (desktop) */}
+        <div className="hidden md:block" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, letterSpacing: '0.06em', fontFamily: 'JetBrains Mono, monospace' }}>
+          <LiveTime />
+        </div>
+
+        {/* Right: nav links + resume */}
+        <div className="hidden md:flex items-center gap-7">
           {NAV_LINKS.map(({ label, id }) => (
             <button
               key={id}
               onClick={() => scrollTo(id)}
-              className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200
-                ${isHome && active === id ? 'text-accent' : 'text-slate-600 hover:text-accent hover:bg-blue-50'}`}
+              style={{
+                fontSize: 11,
+                fontWeight: 400,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: isHome && active === id ? '#ffffff' : 'rgba(255,255,255,0.35)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={e => e.currentTarget.style.color = isHome && active === id ? '#ffffff' : 'rgba(255,255,255,0.35)'}
             >
               {label}
-              {isHome && active === id && (
-                <motion.span
-                  layoutId="nav-pill"
-                  className="absolute inset-0 bg-blue-50 rounded-lg -z-10"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
             </button>
           ))}
-        </nav>
-
-        {/* Resume button */}
-        <a
-          href={contactInfo.resumeUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="hidden md:inline-flex btn-primary text-sm py-2 px-5"
-        >
-          Resume
-        </a>
+          <a href={contactInfo.resumeUrl} target="_blank" rel="noreferrer" className="btn-ghost" style={{ padding: '6px 14px', fontSize: 10 }}>
+            Resume
+          </a>
+        </div>
 
         {/* Hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block h-0.5 w-5 bg-slate-700 transition-transform duration-200 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block h-0.5 w-5 bg-slate-700 transition-opacity duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block h-0.5 w-5 bg-slate-700 transition-transform duration-200 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        <button className="md:hidden text-white p-2" onClick={() => setMenuOpen(!menuOpen)}>
+          <span className={`block h-px w-5 bg-current transition-transform duration-200 ${menuOpen ? 'rotate-45 translate-y-[5px]' : ''}`} />
+          <span className={`block h-px w-5 bg-current my-1.5 transition-opacity ${menuOpen ? 'opacity-0' : ''}`} />
+          <span className={`block h-px w-5 bg-current transition-transform duration-200 ${menuOpen ? '-rotate-45 -translate-y-[5px]' : ''}`} />
         </button>
       </div>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-1"
+            style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.07)' }}
+            className="md:hidden px-8 py-5 flex flex-col gap-4"
           >
             {NAV_LINKS.map(({ label, id }) => (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                className="text-left px-4 py-2.5 text-sm font-medium text-slate-700 rounded-xl hover:bg-blue-50 hover:text-accent transition-colors"
-              >
+              <button key={id} onClick={() => scrollTo(id)}
+                style={{ textAlign: 'left', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer' }}>
                 {label}
               </button>
             ))}
-            <a
-              href={contactInfo.resumeUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-2 btn-primary text-sm justify-center"
-            >
-              Resume
-            </a>
+            <a href={contactInfo.resumeUrl} target="_blank" rel="noreferrer" className="btn-ghost" style={{ width: 'fit-content' }}>Resume</a>
           </motion.div>
         )}
       </AnimatePresence>
