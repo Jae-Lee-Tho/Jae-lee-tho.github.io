@@ -34,8 +34,10 @@ function ProjectRow({ project, index, onClick }) {
         gridTemplateColumns: '2fr 3fr',
         borderBottom: '1px solid rgba(255,255,255,0.07)',
         cursor: 'pointer',
+        position: 'relative',
       }}
-      whileHover={{ backgroundColor: 'rgba(255,255,255,0.02)' }}
+      whileHover={{ backgroundColor: 'rgba(255,255,255,0.03)', x: 3 }}
+      transition={{ duration: 0.18 }}
     >
       {/* Thumbnail */}
       <div style={{
@@ -82,12 +84,15 @@ function ProjectRow({ project, index, onClick }) {
           <span style={{ fontSize: 10, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.28)', fontFamily: 'JetBrains Mono, monospace' }}>
             {techLabel[project.slug]}
           </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'rgba(255,255,255,0.45)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          <motion.div
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.2 }}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.55)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: 'JetBrains Mono, monospace' }}>
             <span>View</span>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
             </svg>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.div>

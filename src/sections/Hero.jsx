@@ -243,13 +243,26 @@ export default function Hero() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, flex: 1, alignItems: 'start' }}>
             {/* Left: spec sheet */}
             <div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                style={{ fontSize: 'clamp(40px, 5.5vw, 72px)', fontWeight: 700, letterSpacing: '-2.5px', lineHeight: 0.95, color: '#ffffff', marginBottom: 12 }}>
-                Jaegyoon<br />Lee
-              </motion.h1>
+              <div style={{ marginBottom: 12 }}>
+                <div style={{ overflow: 'hidden', lineHeight: 0.92 }}>
+                  <motion.div
+                    initial={{ y: '108%' }}
+                    animate={{ y: '0%' }}
+                    transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ fontSize: 'clamp(52px, 7vw, 96px)', fontWeight: 800, letterSpacing: '-3.5px', color: '#ffffff', textTransform: 'uppercase', lineHeight: 0.92 }}>
+                    Jaegyoon
+                  </motion.div>
+                </div>
+                <div style={{ overflow: 'hidden', lineHeight: 0.92 }}>
+                  <motion.div
+                    initial={{ y: '108%' }}
+                    animate={{ y: '0%' }}
+                    transition={{ duration: 1.0, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ fontSize: 'clamp(52px, 7vw, 96px)', fontWeight: 800, letterSpacing: '-3.5px', color: 'transparent', WebkitTextStroke: '1.5px rgba(255,255,255,0.5)', textTransform: 'uppercase', lineHeight: 0.92 }}>
+                    Lee
+                  </motion.div>
+                </div>
+              </div>
               <motion.p
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.7 }}
                 style={{ fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)', marginBottom: 44, fontFamily: 'JetBrains Mono, monospace' }}>

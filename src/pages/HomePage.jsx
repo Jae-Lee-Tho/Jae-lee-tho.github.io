@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Marquee from '../components/Marquee'
 import Hero from '../sections/Hero'
 import About from '../sections/About'
 import Projects from '../sections/Projects'
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <About />
         <Projects />
         <Skills />
