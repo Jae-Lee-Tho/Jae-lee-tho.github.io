@@ -2,13 +2,15 @@
 export const projects = [
   {
     slug: 'drone-control',
-    title: 'Voice & EMG Assistive Drone Control',
+    title: 'Voice & EEG Assistive Drone Control',
+    image: '/projects/drone-poster.jpg',
+    poster: '/projects/drone-poster.jpg',
     shortDesc:
       'A multimodal UAV control system integrating voice recognition and EMG signal processing for hands-free drone navigation.',
     description:
       'Designed a multimodal assistive UAV control system that combines voice recognition and EMG signal processing, enabling fully hands-free drone navigation. The system processes real-time signals through a Python pipeline (Voice → Intent Classification → EMG Processing → Flight Commands) using embedded firmware for low-latency actuation. Signal filtering, threshold tuning, and command validation were optimized to improve accuracy and stability during dynamic flight testing.',
     tags: ['Python', 'Arduino', 'Embedded Systems', 'Signal Processing', 'UAV'],
-    tech: ['Python', 'Arduino', 'EMG Sensors', 'Embedded C', 'Signal Filtering'],
+    tech: ['Python', 'Arduino', 'EEG Sensors', 'Embedded C', 'Signal Filtering'],
     github: 'https://github.com/jlee1296',
     live: null,
     period: 'Feb 2025 – Present',

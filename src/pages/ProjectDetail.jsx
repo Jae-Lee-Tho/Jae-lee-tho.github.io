@@ -131,6 +131,27 @@ export default function ProjectDetail() {
             </div>
           </div>
         </div>
+
+        {/* Poster */}
+        {project.poster && (
+          <div className="max-w-7xl mx-auto px-8 md:px-14" style={{ paddingBottom: 80 }}>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 48 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
+                <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', fontFamily: 'JetBrains Mono, monospace' }}>Research Poster</span>
+                <div style={{ height: 1, flex: 1, background: 'rgba(255,255,255,0.07)' }} />
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
+                style={{ border: '1px solid rgba(255,255,255,0.07)', overflow: 'hidden' }}>
+                <img
+                  src={project.poster}
+                  alt={`${project.title} research poster`}
+                  style={{ width: '100%', display: 'block', opacity: 0.9 }}
+                />
+              </motion.div>
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
