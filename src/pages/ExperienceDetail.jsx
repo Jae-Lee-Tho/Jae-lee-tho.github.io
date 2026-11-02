@@ -62,7 +62,7 @@ export default function ExperienceDetail() {
             Back to Experience
           </button>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 48, alignItems: 'start' }}>
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-12 items-start">
             {/* Main */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {project.image && (
@@ -145,7 +145,7 @@ export default function ExperienceDetail() {
                 <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', fontFamily: 'JetBrains Mono, monospace' }}>Gallery</span>
                 <div style={{ height: 1, flex: 1, background: 'rgba(255,255,255,0.07)' }} />
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 16 }}>
                 {project.gallery.map((g, i) => (
                   <motion.figure
                     key={g.src}

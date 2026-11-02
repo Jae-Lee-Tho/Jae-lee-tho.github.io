@@ -13,9 +13,8 @@ function ExperienceRow({ item, index, onClick }) {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
       onClick={onClick}
+      className="grid grid-cols-1 sm:grid-cols-[2fr_3fr]"
       style={{
-        display: 'grid',
-        gridTemplateColumns: '2fr 3fr',
         borderBottom: '1px solid rgba(255,255,255,0.07)',
         cursor: 'pointer',
         position: 'relative',
@@ -27,6 +26,7 @@ function ExperienceRow({ item, index, onClick }) {
         aspectRatio: '4/3',
         background: 'rgba(255,255,255,0.03)',
         borderRight: '1px solid rgba(255,255,255,0.07)',
+        borderLeft: '1px solid transparent',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -55,7 +55,7 @@ function ExperienceRow({ item, index, onClick }) {
       </div>
 
       {/* Content */}
-      <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 14, minHeight: 140 }}>
+      <div className="px-5 py-6 sm:px-8 sm:py-7" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 14, minHeight: 140 }}>
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 10 }}>
             <p style={{ fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', fontFamily: mono }}>
@@ -105,10 +105,10 @@ export default function Experience() {
     <section id="experience" style={{ background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="max-w-6xl mx-auto px-8 md:px-14" style={{ paddingTop: 96, paddingBottom: 96 }}>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 64, alignItems: 'start' }}>
+        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 md:gap-16 items-start">
 
           {/* LEFT: sticky heading */}
-          <div style={{ position: 'sticky', top: 72 }}>
+          <div className="md:sticky" style={{ top: 72 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 32 }}>
               <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: mono }}>03</span>
               <div style={{ height: 1, width: 28, background: 'rgba(255,255,255,0.2)' }} />
