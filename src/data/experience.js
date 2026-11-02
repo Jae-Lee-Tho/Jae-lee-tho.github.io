@@ -1,32 +1,7 @@
-// Ordered by start date (oldest → newest).
+// Display order is set by hand (array order = row order on the homepage).
 // Add a photo by putting it in /public/experience/ and setting `image: '/experience/<file>.jpg'` (4:3 recommended).
 // `category` and `techLine` are shown on the homepage row.
 export const experience = [
-  {
-    slug: 'snu-ari-lab',
-    category: 'RESEARCH',
-    techLine: 'ROS 2 · Isaac Sim · MuJoCo',
-    role: 'Research Intern',
-    org: 'Autonomous Robot Intelligence Lab, Seoul National University',
-    orgShort: 'SNU ARI Lab',
-    location: 'Seoul, South Korea',
-    period: 'May 2025 – Sep 2025',
-    image: null,
-    shortDesc:
-      'Built ROS 2 simulation and perception pipelines for a G1 humanoid robot and supported autonomous golf cart navigation tests.',
-    description:
-      'Research internship at the Autonomous Robot Intelligence Lab at Seoul National University. Worked on simulation and perception for a Unitree G1 humanoid robot and on hardware integration for an autonomous golf cart.',
-    highlights: [
-      'Developed ROS 2–based simulation pipelines in Isaac Sim and MuJoCo for the G1 humanoid, integrating perception modules (LiDAR, vision models) with control policies to enable reproducible experiments',
-      'Analyzed circuit issues on an autonomous golf cart and integrated Arduino modules with its control system for navigation tests',
-      'Built a perception pipeline for a humanoid robot with scene graph generation and Intel RealSense–based object detection',
-    ],
-    tags: ['ROS 2', 'Isaac Sim', 'MuJoCo', 'RealSense', 'Humanoid'],
-    tech: ['ROS 2', 'Isaac Sim', 'MuJoCo', 'Intel RealSense', 'LiDAR', 'Arduino', 'Python'],
-    link: 'https://arisnu.squarespace.com/',
-    linkLabel: 'Lab Website',
-    bgColor: '#0f766e',
-  },
   {
     slug: 'arc-lab',
     category: 'RESEARCH',
@@ -76,6 +51,31 @@ export const experience = [
     link: null,
     linkLabel: null,
     bgColor: '#7c3aed',
+  },
+  {
+    slug: 'snu-ari-lab',
+    category: 'RESEARCH',
+    techLine: 'ROS 2 · Isaac Sim · MuJoCo',
+    role: 'Research Intern',
+    org: 'Autonomous Robot Intelligence Lab, Seoul National University',
+    orgShort: 'SNU ARI Lab',
+    location: 'Seoul, South Korea',
+    period: 'May 2025 – Sep 2025',
+    image: null,
+    shortDesc:
+      'Built ROS 2 simulation and perception pipelines for a G1 humanoid robot and supported autonomous golf cart navigation tests.',
+    description:
+      'Research internship at the Autonomous Robot Intelligence Lab at Seoul National University. Worked on simulation and perception for a Unitree G1 humanoid robot and on hardware integration for an autonomous golf cart.',
+    highlights: [
+      'Developed ROS 2–based simulation pipelines in Isaac Sim and MuJoCo for the G1 humanoid, integrating perception modules (LiDAR, vision models) with control policies to enable reproducible experiments',
+      'Analyzed circuit issues on an autonomous golf cart and integrated Arduino modules with its control system for navigation tests',
+      'Built a perception pipeline for a humanoid robot with scene graph generation and Intel RealSense–based object detection',
+    ],
+    tags: ['ROS 2', 'Isaac Sim', 'MuJoCo', 'RealSense', 'Humanoid'],
+    tech: ['ROS 2', 'Isaac Sim', 'MuJoCo', 'Intel RealSense', 'LiDAR', 'Arduino', 'Python'],
+    link: 'https://arisnu.squarespace.com/',
+    linkLabel: 'Lab Website',
+    bgColor: '#0f766e',
   },
   {
     slug: 'dogu-robotics',

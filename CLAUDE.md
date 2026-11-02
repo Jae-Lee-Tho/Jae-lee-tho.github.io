@@ -148,7 +148,7 @@ That's it — the project row on the homepage and the detail page (`/projects/yo
 
 ## Adding a New Experience
 
-Edit `src/data/experience.js`. Entries are in calendar order (oldest first) — insert new roles by start date.
+Edit `src/data/experience.js`. Rows appear in array order (currently set by hand: ARC Lab, Dogu Robotics, Husky Robotics, SNU ARI Lab).
 
 ```js
 {
