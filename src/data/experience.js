@@ -55,24 +55,31 @@ export const experience = [
   {
     slug: 'snu-ari-lab',
     category: 'RESEARCH',
-    techLine: 'ROS 2 · Isaac Sim · MuJoCo',
+    techLine: 'ROS 2 · Isaac Sim · YOLO · Circuits',
     role: 'Research Intern',
-    org: 'Autonomous Robot Intelligence Lab, Seoul National University',
+    org: 'Autonomous Robot Intelligence Lab (ARIL), Seoul National University',
     orgShort: 'SNU ARI Lab',
     location: 'Seoul, South Korea',
     period: 'May 2025 – Sep 2025',
-    image: null,
-    shortDesc:
-      'Built ROS 2 simulation and perception pipelines for a G1 humanoid robot and supported autonomous golf cart navigation tests.',
-    description:
-      'Research internship at the Autonomous Robot Intelligence Lab at Seoul National University. Worked on simulation and perception for a Unitree G1 humanoid robot and on hardware integration for an autonomous golf cart.',
-    highlights: [
-      'Developed ROS 2–based simulation pipelines in Isaac Sim and MuJoCo for the G1 humanoid, integrating perception modules (LiDAR, vision models) with control policies to enable reproducible experiments',
-      'Analyzed circuit issues on an autonomous golf cart and integrated Arduino modules with its control system for navigation tests',
-      'Built a perception pipeline for a humanoid robot with scene graph generation and Intel RealSense–based object detection',
+    image: '/experience/snu-thumb.jpg',
+    gallery: [
+      { src: '/experience/snu-yolo-depth.jpg', caption: 'YOLO + depth 3D object detection with a RealSense camera' },
+      { src: '/experience/snu-scenegraph.jpg', caption: 'House-environment scene graph for route planning' },
+      { src: '/experience/snu-ev-wiring.jpg', caption: 'Hand-drawn LIMBO EV wiring diagram: battery, motor driver, switches, Arduino Nano' },
     ],
-    tags: ['ROS 2', 'Isaac Sim', 'MuJoCo', 'RealSense', 'Humanoid'],
-    tech: ['ROS 2', 'Isaac Sim', 'MuJoCo', 'Intel RealSense', 'LiDAR', 'Arduino', 'Python'],
+    shortDesc:
+      'Humanoid perception and scene-graph planning in ROS 2 and Isaac Sim, plus reviving an autonomous golf cart’s electrical system.',
+    description:
+      'Twelve-week research internship at the Autonomous Robot Intelligence Lab (ARIL) at Seoul National University across two projects. On LIMBO Indoor, I worked on humanoid robotics, enabling the robot to perceive objects, represent its environment as a scene graph, and plan through subtask decomposition and reasoning. On LIMBO EV, I helped revive the Roki autonomous golf cart for outdoor robotics experiments by debugging its hardware, exchanging the battery, and redrawing its power and control wiring.',
+    highlights: [
+      'Built a 3D object detection pipeline combining YOLO with depth estimation on an Intel RealSense camera, published through ROS 2 topics',
+      'Generated scene graphs that structure the spatial relationships of indoor environments for robot memory and route planning, and built a perception-to-planner pipeline with LangChain and LangGraph',
+      'Developed ROS 2–based simulation pipelines in Isaac Sim and MuJoCo for the G1 humanoid, integrating perception modules with control policies for reproducible experiments',
+      'Revived the LIMBO EV (Roki) golf cart: debugged its hardware, exchanged the battery, and mapped power distribution across the motor driver, switches, and Arduino Nano in a full wiring diagram',
+      'Reviewed autonomous-vehicle and manipulation papers and proposed technical improvements for the EV platform',
+    ],
+    tags: ['Humanoid', 'Perception', 'Scene Graph', 'Autonomous EV', 'Circuits'],
+    tech: ['ROS 2', 'Isaac Sim', 'MuJoCo', 'Intel RealSense', 'YOLO', 'LangChain', 'LangGraph', 'Python', 'Arduino', 'Ubuntu'],
     link: 'https://arisnu.squarespace.com/',
     linkLabel: 'Lab Website',
     bgColor: '#0f766e',
