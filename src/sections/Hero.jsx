@@ -220,7 +220,7 @@ export default function Hero() {
         <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="max-w-7xl mx-auto px-8 md:px-14" style={{ display: 'flex', gap: 28, alignItems: 'center', height: 34 }}>
             {[['STATUS', 'ACTIVE'], ['CLASS', 'ECE / RESEARCH'], ['VERSION', 'v2025.1'], ['LOCATION', 'SEA, USA']].map(([k, v]) => (
-              <div key={k} style={{ display: 'flex', gap: 8, alignItems: 'center', flexShrink: 0 }}>
+              <div key={k} className={k === 'VERSION' || k === 'LOCATION' ? 'hidden md:flex' : 'flex'} style={{ gap: 8, alignItems: 'center', flexShrink: 0 }}>
                 <span style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', fontFamily: 'JetBrains Mono, monospace' }}>{k}</span>
                 <span style={{ fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', fontFamily: 'JetBrains Mono, monospace' }}>{v}</span>
               </div>
@@ -240,7 +240,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Two-col */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, flex: 1, alignItems: 'start' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16" style={{ flex: 1, alignItems: 'start' }}>
             {/* Left: spec sheet */}
             <div>
               <div style={{ marginBottom: 12 }}>

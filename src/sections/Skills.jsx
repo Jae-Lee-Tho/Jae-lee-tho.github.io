@@ -107,7 +107,7 @@ export default function Skills() {
         </div>
 
         {/* 3-col grid (2-col on md, 1-col on sm) */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'rgba(255,255,255,0.06)' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 1, background: 'rgba(255,255,255,0.06)' }}>
           {skillCategories.map((cat, i) => (
             <div key={cat.id} style={{ background: '#0d0d0d' }}>
               <SkillCard category={cat} index={i} />

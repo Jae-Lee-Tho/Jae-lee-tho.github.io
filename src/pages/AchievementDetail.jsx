@@ -58,7 +58,7 @@ export default function AchievementDetail() {
             Back to Achievements
           </button>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 48, alignItems: 'start' }}>
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-12 items-start">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               <motion.div
                 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
