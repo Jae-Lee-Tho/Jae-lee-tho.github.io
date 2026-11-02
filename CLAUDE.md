@@ -22,18 +22,20 @@ This file is the source of truth for AI-assisted updates to this portfolio. Read
 ```
 src/
   data/          ← Content lives here. Edit these to add projects / achievements / skills.
+    experience.js
     projects.js
     achievements.js
     skills.js
     contact.js
-  sections/      ← Homepage sections (Hero, About, Projects, Skills, Achievements, Contact)
-  pages/         ← Route pages (HomePage, ProjectDetail, AchievementDetail)
+  sections/      ← Homepage sections (Hero, About, Experience, Projects, Skills, Achievements, Contact)
+  pages/         ← Route pages (HomePage, ExperienceDetail, ProjectDetail, AchievementDetail)
   components/    ← Shared components (Navbar, Footer, Marquee, IntroLoader)
   hooks/         ← useLenis.js, useActiveSection.js, useScrollReveal.js
   index.css      ← Global styles and shared utility classes
 public/
   intro.mp4      ← Intro loader background video
   jae-photo.jpeg ← Profile photo used in About section
+  experience/    ← Experience thumbnails and gallery photos
   projects/      ← Project thumbnail images (e.g. otv.jpg)
   favicon.svg
 ```
@@ -81,7 +83,7 @@ Every section uses the same numbered label above the heading. Never deviate from
 </div>
 ```
 
-Section numbers: 01 Hero · 02 About · 03 Projects · 04 Skills · 05 Achievements · 06 Contact
+Section numbers: 01 Hero · 02 About · 03 Experience · 04 Projects · 05 Skills · 06 Achievements · 07 Contact
 
 ### Animation Conventions
 - **Entrance**: `initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}`
@@ -141,6 +143,37 @@ const techLabel = {
 Place a `.jpg` or `.png` in `/public/projects/your-image.jpg` and reference it in the project data as `image: '/projects/your-image.jpg'`. Recommended aspect ratio: **4:3**.
 
 That's it — the project row on the homepage and the detail page (`/projects/your-project-slug`) are generated automatically.
+
+---
+
+## Adding a New Experience
+
+Edit `src/data/experience.js`. Entries are in calendar order (oldest first) — insert new roles by start date.
+
+```js
+{
+  slug: 'company-slug',            // URL: /experience/company-slug
+  category: 'INDUSTRY',            // Row label: 'RESEARCH', 'INDUSTRY', 'STUDENT TEAM'
+  techLine: 'Tool · Tool · Tool',  // Short tech string on the homepage row
+  role: 'Software Engineering Intern',
+  org: 'Full Organization Name',   // Detail page subtitle
+  orgShort: 'Short Name',          // Homepage row + thumbnail placeholder
+  location: 'Seattle, WA',
+  period: 'Jul 2026 – Sep 2026',
+  image: '/experience/file.jpg',   // Optional 4:3 thumbnail (also shown on the detail page), or null
+  gallery: [                       // Optional extra photos on the detail page
+    { src: '/experience/file2.jpg', caption: 'Optional caption' },
+  ],
+  shortDesc: 'One-sentence summary for the homepage row.',
+  description: 'Paragraph for the detail page Overview.',
+  highlights: ['Bullet', 'Bullet', 'Bullet'],  // "What I Did" on the detail page
+  tags: ['Topic'],
+  tech: ['Tool'],
+  link: 'https://...',             // or null
+  linkLabel: 'Lab Website',
+  bgColor: '#2563eb',              // Unused visually
+}
+```
 
 ---
 
@@ -206,10 +239,10 @@ This object is imported by Hero, About, Contact, and Navbar — changing it here
 
 ## Page Layout Patterns
 
-### Detail Pages (`ProjectDetail`, `AchievementDetail`)
+### Detail Pages (`ExperienceDetail`, `ProjectDetail`, `AchievementDetail`)
 Both follow this structure:
 1. Navbar (fixed, 52px height → `paddingTop: 52` on main)
-2. Doc header strip: left label + right ID code (e.g. `PRJ-01`, `ACH-01`)
+2. Doc header strip: left label + right ID code (e.g. `EXP-01`, `PRJ-01`, `ACH-01`)
 3. Banner with section number label + `<h1>` title
 4. Main content: `2fr 1fr` grid (main left, sidebar right)
 5. Footer

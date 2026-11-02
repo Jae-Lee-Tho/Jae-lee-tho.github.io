@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 import HomePage from './pages/HomePage'
 import ProjectDetail from './pages/ProjectDetail'
 import AchievementDetail from './pages/AchievementDetail'
+import ExperienceDetail from './pages/ExperienceDetail'
 import IntroLoader from './components/IntroLoader'
 import { useLenis } from './hooks/useLenis'
 
@@ -28,6 +29,7 @@ export default function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/experience/:slug" element={<ExperienceDetail />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/achievements/:slug" element={<AchievementDetail />} />
         </Routes>

@@ -22,7 +22,7 @@ export default function Contact() {
       <div className="section-container">
         {/* Section label */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 56 }}>
-          <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', fontFamily: 'JetBrains Mono, monospace' }}>06</span>
+          <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', fontFamily: 'JetBrains Mono, monospace' }}>07</span>
           <div style={{ height: 1, width: 28, background: 'rgba(255,255,255,0.15)' }} />
           <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', fontFamily: 'JetBrains Mono, monospace' }}>Contact</span>
         </div>
