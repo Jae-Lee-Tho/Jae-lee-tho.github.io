@@ -3,6 +3,36 @@
 // `category` and `techLine` are shown on the homepage row.
 export const experience = [
   {
+    slug: 'dogu-robotics',
+    category: 'INDUSTRY',
+    techLine: 'STM32 · CAN · ROS · GNSS',
+    role: 'Software Engineering Intern',
+    org: 'DOGU Robotics',
+    orgShort: 'Dogu Robotics',
+    location: 'Seattle, WA / South Korea',
+    period: 'Jul 2026 – Sep 2026',
+    image: '/experience/dogu-thumb.jpg',
+    gallery: [
+      { src: '/experience/dogu-oscilloscope.jpg', caption: 'Oscilloscope timing validation on the Patrover' },
+      { src: '/experience/dogu-waypoint-nav.jpg', caption: 'Waypoint navigation to goal points in the robot control UI' },
+      { src: '/experience/dogu-test-run.jpg', caption: 'Running automated validation tests on the robot' },
+    ],
+    shortDesc:
+      'Firmware timing validation, GNSS-based localization logic, and an LLM agent pipeline for automated certification testing.',
+    description:
+      'Software engineering internship at DOGU Robotics, which builds AI-powered autonomous security and patrol robots such as Patrover. I worked across firmware validation, ROS localization and navigation, and test automation to support validation and certification of the Patrover platform.',
+    highlights: [
+      'Instrumented STM32 firmware with DWT cycle-counter timing to measure worst-case CAN round-trip latency across four motor-driver nodes with zero timeouts, and E-Stop response; found and fixed a trigger-counting defect in the measurement path',
+      'Developed ROS localization logic that switches indoor/boundary/outdoor modes from GNSS horizontal accuracy with hysteresis and dwell gating, validated against design timing, and implemented waypoint navigation to GPS-coordinate goals',
+      'Built an LLM agent pipeline using tool calling that routes validation requests to per-test agents, which provision the containerized environment and launch certification tests, from fully automated runs to operator-guided procedures',
+    ],
+    tags: ['Patrol Robot', 'Firmware Validation', 'Localization', 'Test Automation', 'LLM Agents'],
+    tech: ['STM32', 'CAN', 'ROS', 'GNSS/RTK', 'Docker', 'Python', 'LLM Tool Calling', 'Oscilloscope'],
+    link: 'https://www.dogurobotics.com/',
+    linkLabel: 'Company Website',
+    bgColor: '#2563eb',
+  },
+  {
     slug: 'arc-lab',
     category: 'RESEARCH',
     techLine: 'Computer Vision · Tracking',
@@ -11,7 +41,8 @@ export const experience = [
     orgShort: 'UW ARC Lab',
     location: 'Seattle, WA',
     period: 'Mar 2026 – Present',
-    image: null,
+    image: '/experience/arc-logo.png',
+    imageFit: 'contain',
     shortDesc:
       'Developing a vision-based Detect-and-Avoid pipeline that tracks aerial objects using onboard camera systems.',
     description:
@@ -23,8 +54,8 @@ export const experience = [
     ],
     tags: ['Computer Vision', 'Detect-and-Avoid', 'Tracking', 'Python'],
     tech: ['Python', 'Object Detection', 'Multi-frame Tracking', 'Frame Alignment'],
-    link: null,
-    linkLabel: null,
+    link: 'https://www.arcuw.org/',
+    linkLabel: 'Lab Website',
     bgColor: '#4f46e5',
   },
   {
@@ -36,7 +67,8 @@ export const experience = [
     orgShort: 'Husky Robotics',
     location: 'Seattle, WA',
     period: 'Apr 2026 – Present',
-    image: null,
+    image: '/experience/husky-logo.png',
+    imageFit: 'contain',
     shortDesc:
       'Building STM32H743 flight controller firmware for a custom drone board, from sensors and motors to automated hardware tests.',
     description:
@@ -48,8 +80,8 @@ export const experience = [
     ],
     tags: ['C++', 'STM32H7', 'PX4', 'DShot', 'Embedded'],
     tech: ['C++', 'STM32H743', 'PX4', 'DShot600', 'AM32 ESC', 'DMA'],
-    link: null,
-    linkLabel: null,
+    link: 'https://uwrobots.org/',
+    linkLabel: 'Team Website',
     bgColor: '#7c3aed',
   },
   {
@@ -83,35 +115,5 @@ export const experience = [
     link: 'https://arisnu.squarespace.com/',
     linkLabel: 'Lab Website',
     bgColor: '#0f766e',
-  },
-  {
-    slug: 'dogu-robotics',
-    category: 'INDUSTRY',
-    techLine: 'STM32 · CAN · ROS · GNSS',
-    role: 'Software Engineering Intern',
-    org: 'DOGU Robotics',
-    orgShort: 'Dogu Robotics',
-    location: 'Seattle, WA / South Korea',
-    period: 'Jul 2026 – Sep 2026',
-    image: '/experience/dogu-thumb.jpg',
-    gallery: [
-      { src: '/experience/dogu-oscilloscope.jpg', caption: 'Oscilloscope timing validation on the Patrover' },
-      { src: '/experience/dogu-waypoint-nav.jpg', caption: 'Waypoint navigation to goal points in the robot control UI' },
-      { src: '/experience/dogu-test-run.jpg', caption: 'Running automated validation tests on the robot' },
-    ],
-    shortDesc:
-      'Firmware timing validation, GNSS-based localization logic, and an LLM agent pipeline for automated certification testing.',
-    description:
-      'Software engineering internship at DOGU Robotics, which builds AI-powered autonomous security and patrol robots such as Patrover. I worked across firmware validation, ROS localization and navigation, and test automation to support validation and certification of the Patrover platform.',
-    highlights: [
-      'Instrumented STM32 firmware with DWT cycle-counter timing to measure worst-case CAN round-trip latency across four motor-driver nodes with zero timeouts, and E-Stop response; found and fixed a trigger-counting defect in the measurement path',
-      'Developed ROS localization logic that switches indoor/boundary/outdoor modes from GNSS horizontal accuracy with hysteresis and dwell gating, validated against design timing, and implemented waypoint navigation to GPS-coordinate goals',
-      'Built an LLM agent pipeline using tool calling that routes validation requests to per-test agents, which provision the containerized environment and launch certification tests, from fully automated runs to operator-guided procedures',
-    ],
-    tags: ['Patrol Robot', 'Firmware Validation', 'Localization', 'Test Automation', 'LLM Agents'],
-    tech: ['STM32', 'CAN', 'ROS', 'GNSS/RTK', 'Docker', 'Python', 'LLM Tool Calling', 'Oscilloscope'],
-    link: 'https://www.dogurobotics.com/',
-    linkLabel: 'Company Website',
-    bgColor: '#2563eb',
   },
 ]

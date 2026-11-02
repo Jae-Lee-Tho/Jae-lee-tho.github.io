@@ -69,7 +69,10 @@ export default function ExperienceDetail() {
                 <motion.div
                   initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
                   style={{ border: '1px solid rgba(255,255,255,0.07)', overflow: 'hidden' }}>
-                  <img src={project.image} alt={project.org} style={{ width: '100%', display: 'block', opacity: 0.9 }} />
+                  <img src={project.image} alt={project.org}
+                    style={project.imageFit === 'contain'
+                      ? { width: '100%', maxHeight: 320, objectFit: 'contain', display: 'block', padding: 24, opacity: 0.9, background: 'rgba(255,255,255,0.02)' }
+                      : { width: '100%', display: 'block', opacity: 0.9 }} />
                 </motion.div>
               )}
               <motion.div

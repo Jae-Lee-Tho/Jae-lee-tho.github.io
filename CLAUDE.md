@@ -148,7 +148,7 @@ That's it — the project row on the homepage and the detail page (`/projects/yo
 
 ## Adding a New Experience
 
-Edit `src/data/experience.js`. Rows appear in array order (currently set by hand: ARC Lab, Husky Robotics, SNU ARI Lab, Dogu Robotics). Place new roles where you want them to appear.
+Edit `src/data/experience.js`. Rows appear in array order (currently set by hand: Dogu Robotics, ARC Lab, Husky Robotics, SNU ARI Lab). Place new roles where you want them to appear.
 
 ```js
 {
@@ -161,6 +161,7 @@ Edit `src/data/experience.js`. Rows appear in array order (currently set by hand
   location: 'Seattle, WA',
   period: 'Jul 2026 – Sep 2026',
   image: '/experience/file.jpg',   // Optional 4:3 thumbnail (also shown on the detail page), or null
+  imageFit: 'contain',             // Optional: use for logos so they aren't cropped
   gallery: [                       // Optional extra photos on the detail page
     { src: '/experience/file2.jpg', caption: 'Optional caption' },
   ],

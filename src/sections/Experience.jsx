@@ -35,7 +35,7 @@ function ExperienceRow({ item, index, onClick }) {
       }}>
         {item.image ? (
           <img src={item.image} alt={item.org}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+            style={{ width: '100%', height: '100%', objectFit: item.imageFit || 'cover', opacity: item.imageFit === 'contain' ? 0.85 : 0.7 }} />
         ) : (
           <>
             <svg viewBox="0 0 200 150" width="100%" height="100%" style={{ opacity: 0.08, position: 'absolute', inset: 0 }}>
